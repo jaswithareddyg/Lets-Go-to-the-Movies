@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class MoviesCollectionViewController: UICollectionViewController {
     
     /// The collection view data source
@@ -54,8 +55,8 @@ class MoviesCollectionViewController: UICollectionViewController {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
                                                           for: indexPath) as! MoviesCollectionViewCell
             cell.titleLabel.text = state.trackName
-            cell.priceLabel.text = state.trackPrice
-            cell.ratingLabel.text = state.contentAdvisoryRating.displayString
+            cell.priceLabel.text = String(state.trackPrice!)
+            cell.ratingLabel.text = state.contentAdvisoryRating
             
             // FIXME: Use the new iOS15 Asycn Image API and include a placeholder mage
             cell.imageView.image = UIImage(systemName: "swift")

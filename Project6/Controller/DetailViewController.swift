@@ -12,7 +12,8 @@ class DetailViewController: UIViewController {
     //
     // MARK: - IBOutlets
     //
-    @IBOutlet private var titleLabel: UILabel!
+    //
+    @IBOutlet var titleLabel: UILabel!
     @IBOutlet private var ratingLabel: UILabel!
     @IBOutlet private var priceLabel: UILabel!
     @IBOutlet private var descriptionLabel: UILabel!
@@ -26,8 +27,8 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         titleLabel.text = movie.trackName
-        ratingLabel.text = "Rated \(movie.contentAdvisoryRating)"
-        priceLabel.text = movie.trackPrice
+        ratingLabel.text = "Rated \(String(describing: movie.contentAdvisoryRating))"
+        priceLabel.text = "\(String(describing: movie.trackPrice))"
         descriptionLabel.text = movie.longDescription
     }
 

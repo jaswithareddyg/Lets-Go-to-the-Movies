@@ -36,7 +36,7 @@ class FiltersViewController: UIViewController {
     }
     
     @IBAction func ratingChanged(_ sender: UISegmentedControl) {
-        guard let newRating = Rating(rawValue: ratingsControl.selectedSegmentIndex) else {
+        guard Rating(rawValue: ratingsControl.selectedSegmentIndex) != nil else {
             return
         }
         

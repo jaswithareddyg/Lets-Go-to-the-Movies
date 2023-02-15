@@ -8,8 +8,8 @@
 import UIKit
 
 class MoviesCollectionViewCell: UICollectionViewCell {
-    @IBOutlet private var imageView: UIImageView!
-    @IBOutlet private var ratingLabel: UILabel!
-    @IBOutlet private var priceLabel: UILabel!
-    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var ratingLabel: UILabel!
+    @IBOutlet var priceLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
 }
