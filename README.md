@@ -1,2 +1,11 @@
-# mpcs51030-2022-winter-assignment-6-movies-jasuchicago
-mpcs51030-2022-winter-assignment-6-movies-jasuchicago created by GitHub Classroom
+# Assignment 6
+
+- Name: Jaswitha Reddy Guntaka
+- UChicago Email: jaswithareddy@uchicago.edu
+- Github Id: jasuchicago
+- Slack User Name: Jaswitha Reddy Guntaka
+
+# Attributions
+
+
+# Notes
