@@ -65,10 +65,10 @@ class MoviesCollectionViewController: UICollectionViewController, UISearchResult
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
                                                           for: indexPath) as! MoviesCollectionViewCell
             cell.titleLabel.text = state.trackName
-            cell.priceLabel.text = String(state.trackPrice!)
+            cell.priceLabel.text = String(state.trackPrice ?? 0.0)
             cell.ratingLabel.text = state.contentAdvisoryRating
             
-            // FIXME: Use the new iOS15 Asycn Image API and include a placeholder mage
+            // FIXME: Use the new iOS15 Asycn Image API and include a placeholder image
             cell.imageView.image = UIImage(systemName: "swift")
             MovieClient.getImage ( url: state.artworkUrl100 ?? "", completion: { (image, error) in
                 guard let image = image, error == nil else {
@@ -76,6 +76,15 @@ class MoviesCollectionViewController: UICollectionViewController, UISearchResult
                     return
                 }
                 cell.imageView.image = image
+                let averageColor = image.averageColor
+                cell.backgroundColor = averageColor
+                
+                var brightness: CGFloat = 0
+                averageColor!.getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
+                let textColor: UIColor = brightness > 0.5 ? .black : .white
+                cell.titleLabel.textColor = textColor
+                cell.priceLabel.textColor = textColor
+                cell.ratingLabel.textColor = textColor
             })
             
             return cell
@@ -89,21 +98,19 @@ class MoviesCollectionViewController: UICollectionViewController, UISearchResult
         dataSource.apply(snapshot)
     }
 
-    /*
+    
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
-
-    /*
+    
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
+    
 
-    /*
+    
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
         return false
@@ -116,7 +123,7 @@ class MoviesCollectionViewController: UICollectionViewController, UISearchResult
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
     }
-    */
+    
 }
 
 //
@@ -230,8 +237,7 @@ private extension MoviesCollectionViewController {
     func makeLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { (section: Int, environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             
-            let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: NSCollectionLayoutDimension.fractionalWidth(1.0),
-                                                                                 heightDimension: NSCollectionLayoutDimension.absolute(200)))
+            let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: NSCollectionLayoutDimension.fractionalWidth(1.0), heightDimension: NSCollectionLayoutDimension.absolute(200)))
             item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
             
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),  heightDimension: .absolute(200))
@@ -243,4 +249,20 @@ private extension MoviesCollectionViewController {
         }
     }
 
+}
+
+extension UIImage {
+    var averageColor: UIColor? {
+        guard let inputImage = CIImage(image: self) else { return nil }
+        let extentVector = CIVector(x: inputImage.extent.origin.x, y: inputImage.extent.origin.y, z: inputImage.extent.size.width, w: inputImage.extent.size.height)
+
+        guard let filter = CIFilter(name: "CIAreaAverage", parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector]) else { return nil }
+        guard let outputImage = filter.outputImage else { return nil }
+
+        var bitmap = [UInt8](repeating: 0, count: 4)
+        let context = CIContext(options: [.workingColorSpace: kCFNull as Any])
+        context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
+
+        return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
+    }
 }

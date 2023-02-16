@@ -12,7 +12,7 @@ struct movielist: Decodable {
     let results: [Movie]
 }
 
-/// A move type with data matching the iTunes API (note that the names have historically music-like names)
+/// A movie type with data matching the iTunes API (note that the names have historically music-like names)
 struct Movie : Decodable, Hashable {
     let trackName: String?
     let trackPrice: Float?

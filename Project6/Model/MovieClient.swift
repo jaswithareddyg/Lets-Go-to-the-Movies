@@ -45,33 +45,37 @@ class MovieClient {
     //
     // FIXME: Cache images locally to improve performance
     //
+    
+    static let imageCache = NSCache<NSString, UIImage>()
+
     static func getImage(url: String, completion: @escaping (UIImage?, Error?) -> Void) {
-        let url=URL(string: url)!
-        
-        let session = URLSession.shared
-        
-        
-        
-        let task=session.dataTask(with:url as URL,completionHandler:{(data,response,error)->Void in
-            
+        if let cachedImage = imageCache.object(forKey: url as NSString) {
+            completion(cachedImage,nil)
+            return
+        }
+
+        let url = URL(string: url)!
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data, error == nil else {
-                DispatchQueue.main.async { completion(nil, error) }
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
                 return
             }
-            
+
             if let image = UIImage(data: data) {
+                imageCache.setObject(image, forKey: url.absoluteString as NSString)
                 DispatchQueue.main.async {
-                    // Do something with this
-                    // image on the main thread
                     completion(image, nil)
                 }
-            }else{
+            } else {
                 DispatchQueue.main.async {
                     completion(nil, error)
                 }
             }
-        })
-        
+        }
+
         task.resume()
     }
+
 }
