@@ -15,4 +15,7 @@ https://www.hackingwithswift.com/example-code/media/how-to-read-the-average-colo
 https://gist.github.com/delputnam/2d80e7b4bd9363fd221d131e4cfdbd8f <br>
 Date Picker:<br>
 https://www.youtube.com/watch?v=fhRJ5HQjBIE<br>
+UIStackView: <br>
+https://www.kodeco.com/2198310-uistackview-tutorial-for-ios-introducing-stack-views <br>
+
 # Notes
