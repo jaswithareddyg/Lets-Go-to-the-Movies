@@ -7,8 +7,9 @@
 
 import UIKit
 
+let defaults = UserDefaults.standard
 
-class MoviesCollectionViewController: UICollectionViewController {
+class MoviesCollectionViewController: UICollectionViewController, UISearchResultsUpdating {
     
     /// The collection view data source
     var dataSource: UICollectionViewDiffableDataSource<Int, Movie>!
@@ -30,9 +31,17 @@ class MoviesCollectionViewController: UICollectionViewController {
         navigationItem.hidesSearchBarWhenScrolling = true
         navigationItem.searchController = srchCtr
         
+        srchCtr.searchResultsUpdater = self
+        
+        let searchTerms = defaults.stringArray(forKey: "searchTerms") ?? []
+        print("search terms: ",searchTerms)
+        
         // Use the `MovieClient` to fetch a list of movies
         print("DEBUG ----> about to fetch movies")
-        MovieClient.fetchMovies { [weak self] moviesData, error in
+        
+        let url = "https://itunes.apple.com/search?country=US&media=movie&limit=200&term=love"
+        
+        MovieClient.fetchMovies(url: url) { [weak self] moviesData, error in
             guard let moviesData = moviesData, error == nil else {
                 print(error ?? NSError())
                 return
@@ -46,6 +55,7 @@ class MoviesCollectionViewController: UICollectionViewController {
             
             self?.dataSource.apply(snapshot)
         }
+        
         
         // Create the layout for the collection view
         collectionView.collectionViewLayout = makeLayout()
@@ -174,10 +184,39 @@ extension MoviesCollectionViewController: MoviesFilterDelegate {
 }
 
 extension MoviesCollectionViewController: UISearchBarDelegate {
+    
+    func updateSearchResults(for srchCtr: UISearchController) {
+        guard let searchText = srchCtr.searchBar.text else {return}
+        print(searchText)
+    }
 
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ srchCtr: UISearchBar) {
         // FIXME: Search after enter
         print("Clicked")
+        
+        var senturl = "https://itunes.apple.com/search?country=US&media=movie&limit=200&term="
+        senturl += srchCtr.text!
+        print("Sent",senturl)
+        
+        MovieClient.fetchMovies(url: senturl) { [weak self] moviesData, error in
+            guard let moviesData = moviesData, error == nil else {
+                print(error ?? NSError())
+                return
+            }
+            
+            DataManager.sharedInstance.refreshMovieData(moviesData.results)
+            /// Update the collection view based on the current state of the `data` property
+            var snapshot = NSDiffableDataSourceSnapshot<Int, Movie>()
+            snapshot.appendSections([0])
+            snapshot.appendItems(DataManager.sharedInstance.movies)
+            
+            self?.dataSource.apply(snapshot)
+        }
+        
+        guard let searchText = srchCtr.text else {return}
+        var searchTerms = defaults.stringArray(forKey: "searchTerms") ?? []
+        searchTerms.append(searchText)
+        defaults.set(searchTerms, forKey: "searchTerms")
     }
 }
 

@@ -16,9 +16,11 @@ class MovieClient {
     ///     - completion: A tuple with an `Array` of the movies and an error code
     /// - Throws:
     /// - Returns:
-    static func fetchMovies(completion: @escaping (movielist?, Error?) -> Void) {
+    static func fetchMovies(url: String, completion: @escaping (movielist?, Error?) -> Void) {
         print("DEBUG ---> Attempting to fetch movies")
-        let url = URL(string: "https://itunes.apple.com/search?country=US&media=movie&limit=200&term=love")!
+        let defaulturl = URL(string: "https://itunes.apple.com/search?country=US&media=movie&limit=200&term=love")!
+        let url = URL(string: url) ?? defaulturl
+        print("Used",url)
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             
             guard let data = data, error == nil else {
