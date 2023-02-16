@@ -29,14 +29,13 @@
         <!--Filters View Controller-->
         <scene sceneID="9SP-El-i8E">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cIS-hy-dVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="filtersVC" id="9NG-f1-ZtX" customClass="FiltersViewController" customModule="Project6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zpH-Y3-9q7">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="equalCentering" alignment="top" spacing="2.5" translatesAutoresizingMaskIntoConstraints="NO" id="Tml-2V-hM1">
-                                <rect key="frame" x="15" y="20" width="275" height="270"/>
+                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="fillEqually" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Tml-2V-hM1">
+                                <rect key="frame" x="15" y="20" width="275" height="165"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filters" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bav-mc-RfE">
                                         <rect key="frame" x="0.0" y="0.0" width="46.5" height="21"/>
@@ -48,14 +47,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content Advisory Rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uks-tc-KrE">
-                                        <rect key="frame" x="0.0" y="42" width="174" height="18"/>
+                                        <rect key="frame" x="0.0" y="24" width="174" height="21"/>
                                         <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <color key="textColor" red="0.94029486179999999" green="0.4985897541" blue="0.066530965270000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="4" translatesAutoresizingMaskIntoConstraints="NO" id="JEz-Qe-glU">
-                                        <rect key="frame" x="0.0" y="76" width="275" height="32"/>
+                                        <rect key="frame" x="0.0" y="48" width="275" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="efV-dH-HwM"/>
                                         </constraints>
@@ -71,7 +70,7 @@
                                         </connections>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5x-oH-dXC">
-                                        <rect key="frame" x="0.0" y="121.5" width="37" height="21"/>
+                                        <rect key="frame" x="0.0" y="72" width="37" height="21"/>
                                         <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="lM7-gE-ohr"/>
@@ -81,16 +80,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="2jy-6b-wYQ" userLabel="Price Stack View">
-                                        <rect key="frame" x="0.0" y="156" width="265" height="32"/>
+                                        <rect key="frame" x="0.0" y="96" width="265" height="21"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Less than: $20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DS0-2W-Phx">
-                                                <rect key="frame" x="0.0" y="0.0" width="101.5" height="32"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="101.5" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="uDm-OX-lgr">
-                                                <rect key="frame" x="171" y="0.0" width="94" height="32"/>
+                                                <rect key="frame" x="171" y="0.0" width="94" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="94" id="3kv-F8-vNC"/>
                                                     <constraint firstAttribute="height" constant="32" id="oZb-fw-UO8"/>
@@ -102,7 +101,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9W-Dn-PQD">
-                                        <rect key="frame" x="0.0" y="202" width="33.5" height="21"/>
+                                        <rect key="frame" x="0.0" y="120" width="33.5" height="21"/>
                                         <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="GlT-4m-q9B"/>
@@ -111,14 +110,9 @@
                                         <color key="textColor" red="0.94029486179999999" green="0.4985897541" blue="0.066530965270000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Pne-uR-DUK">
-                                        <rect key="frame" x="0.0" y="236" width="264" height="34"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="264" id="Tq0-YG-0C4"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="YXR-5d-eKz">
+                                        <rect key="frame" x="0.0" y="144" width="275" height="21"/>
+                                    </datePicker>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="2jy-6b-wYQ" firstAttribute="leading" secondItem="Tml-2V-hM1" secondAttribute="leading" id="Xn3-dq-Ed7"/>
@@ -126,6 +120,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Tr5-w3-Fht"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Tml-2V-hM1" firstAttribute="top" secondItem="zpH-Y3-9q7" secondAttribute="top" constant="20" id="7Im-j2-tJQ"/>
@@ -137,12 +132,12 @@
                     </view>
                     <size key="freeformSize" width="300" height="300"/>
                     <connections>
-                        <outlet property="dateTextField" destination="Pne-uR-DUK" id="hlc-nd-HMZ"/>
                         <outlet property="priceLabel" destination="DS0-2W-Phx" id="wxa-Hm-aw6"/>
                         <outlet property="priceStepper" destination="uDm-OX-lgr" id="rRO-HY-2a5"/>
                         <outlet property="ratingsControl" destination="JEz-Qe-glU" id="7bZ-Du-JbO"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cIS-hy-dVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="637.68115942028987" y="-503.57142857142856"/>
         </scene>
