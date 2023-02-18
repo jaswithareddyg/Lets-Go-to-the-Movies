@@ -55,7 +55,7 @@ class FiltersViewController: UIViewController {
         }
         
         DataManager.sharedInstance.update2(rating: selectedRatingFilter)
-        delegate!.changeFilter(price: DataManager.sharedInstance.priceLimitFilter, rating: DataManager.sharedInstance.ratingFilter)
+        delegate?.changeFilter(price: DataManager.sharedInstance.priceLimitFilter, rating: DataManager.sharedInstance.ratingFilter)
     }
     
     @IBAction func priceChanged(_ sender: UIStepper) {
