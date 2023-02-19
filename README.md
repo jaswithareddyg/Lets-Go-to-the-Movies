@@ -20,5 +20,8 @@ https://www.kodeco.com/2198310-uistackview-tutorial-for-ios-introducing-stack-vi
 Cache Data: <br>
 https://www.hackingwithswift.com/example-code/system/how-to-cache-data-using-nscache <br>
 https://developer.apple.com/documentation/foundation/nscache <br>
+https://stackoverflow.com/questions/64126851/how-to-properly-use-dispatchqueue-main-async <br>
+https://stackoverflow.com/questions/59615860/how-do-i-ensure-my-dispatchqueue-executes-some-code-on-the-main-thread-specifica <br>
+https://stackoverflow.com/questions/48699048/what-does-dispatchqueue-main-async-and-completed-escaping-mean-in <br>
 
 # Notes
