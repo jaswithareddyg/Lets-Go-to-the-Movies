@@ -19,5 +19,6 @@ UIStackView: <br>
 https://www.kodeco.com/2198310-uistackview-tutorial-for-ios-introducing-stack-views <br>
 Cache Data: <br>
 https://www.hackingwithswift.com/example-code/system/how-to-cache-data-using-nscache <br>
+https://developer.apple.com/documentation/foundation/nscache <br>
 
 # Notes
