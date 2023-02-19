@@ -58,5 +58,9 @@ class DetailViewController: UIViewController {
     /// - Parameter sender: The button that was tapped
     @IBAction func openSafari(_ sender: UIBarButtonItem) {
         //FIXME: Link to Safari to show preview
+        
+        if let unwrappedURL = movie.previewUrl {
+            UIApplication.shared.open(unwrappedURL)
+        }
     }
 }
