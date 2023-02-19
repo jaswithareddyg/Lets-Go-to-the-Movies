@@ -112,8 +112,11 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" preferredStyle="sliding" translatesAutoresizingMaskIntoConstraints="NO" id="p1V-1E-CN4">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" preferredStyle="sliding" translatesAutoresizingMaskIntoConstraints="NO" id="p1V-1E-CN4">
                                                 <rect key="frame" x="200.5" y="0.0" width="51" height="58.5"/>
+                                                <connections>
+                                                    <action selector="sortChanged:" destination="9NG-f1-ZtX" eventType="valueChanged" id="Blg-jZ-M6X"/>
+                                                </connections>
                                             </switch>
                                         </subviews>
                                     </stackView>

@@ -172,12 +172,21 @@ extension MoviesCollectionViewController: MoviesFilterDelegate {
 
     // FIXME: Update the collection view based on the popover filters (including the release date)
     /// Update the collection view based on the popover filter selections
-    func changeFilter(price: Float, rating: String) {
-        let filteredMovies = DataManager.sharedInstance.movies.filter { movie in
+    func changeFilter(price: Float, rating: String, flag: Int) {
+        var filteredMovies = DataManager.sharedInstance.movies.filter { movie in
             let isBelowSelectedPriceLimit = movie.trackPrice ?? 0 < price
             let matchesSelectedRating = rating == "anyRating" || movie.contentAdvisoryRating?.lowercased() == rating.lowercased()
             
             return isBelowSelectedPriceLimit && matchesSelectedRating
+        }
+        
+        if flag == 1 {
+            filteredMovies.sort {
+                guard let date1 = $0.releaseDate, let date2 = $1.releaseDate else {
+                    return false // if either releaseDate is nil, we can't compare them, so return false
+                }
+                return date1 > date2 // sort by descending release date
+            }
         }
         
         DataManager.sharedInstance.update1(filteredMovies)

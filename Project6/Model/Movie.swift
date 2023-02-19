@@ -17,6 +17,7 @@ struct Movie : Decodable, Hashable {
     let trackName: String?
     let trackPrice: Float?
     let contentAdvisoryRating: String?
+    let releaseDate: String?
     let artworkUrl100: String?
     let longDescription: String?
     let previewUrl: URL?

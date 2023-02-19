@@ -12,7 +12,7 @@ class FiltersViewController: UIViewController {
     @IBOutlet private var priceLabel: UILabel!
     @IBOutlet private var ratingsControl: UISegmentedControl!
     @IBOutlet private var priceStepper: UIStepper!
-    @IBOutlet var sortLatest: UISwitch!
+    @IBOutlet private var sortLatest: UISwitch!
     weak var delegate: MoviesFilterDelegate?
     
     override func viewDidLoad() {
@@ -55,12 +55,21 @@ class FiltersViewController: UIViewController {
         }
         
         DataManager.sharedInstance.update2(rating: selectedRatingFilter)
-        delegate?.changeFilter(price: DataManager.sharedInstance.priceLimitFilter, rating: DataManager.sharedInstance.ratingFilter)
+        delegate?.changeFilter(price: DataManager.sharedInstance.priceLimitFilter, rating: DataManager.sharedInstance.ratingFilter, flag: 0)
     }
     
     @IBAction func priceChanged(_ sender: UIStepper) {
         DataManager.sharedInstance.update2(priceLimit: Float(sender.value))
         priceLabel.text = "Less than: \(DataManager.sharedInstance.priceLimitDisplayString)"
-        delegate?.changeFilter(price: DataManager.sharedInstance.priceLimitFilter, rating: DataManager.sharedInstance.ratingFilter)
+        delegate?.changeFilter(price: DataManager.sharedInstance.priceLimitFilter, rating: DataManager.sharedInstance.ratingFilter, flag: 0)
+    }
+    
+    @IBAction func sortChanged(_ sender: UISwitch) {
+        if sender.isOn {
+            delegate?.changeFilter(price: DataManager.sharedInstance.priceLimitFilter, rating: DataManager.sharedInstance.ratingFilter, flag: 1)
+        }
+        else {
+            delegate?.changeFilter(price: DataManager.sharedInstance.priceLimitFilter, rating: DataManager.sharedInstance.ratingFilter, flag: 0)
+        }
     }
 }
