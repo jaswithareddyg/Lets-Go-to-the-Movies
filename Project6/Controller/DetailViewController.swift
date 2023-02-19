@@ -14,9 +14,10 @@ class DetailViewController: UIViewController {
     //
     //
     @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var imageView: UIImageView!
     @IBOutlet private var ratingLabel: UILabel!
     @IBOutlet private var priceLabel: UILabel!
-    @IBOutlet private var descriptionLabel: UILabel!
+    @IBOutlet private var descriptionTextView: UILabel!
     
     var movie: Movie!
 
@@ -27,9 +28,26 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         titleLabel.text = movie.trackName
+        imageView.image = UIImage(systemName: "swift")
+        MovieClient.getImage ( url: movie.artworkUrl100 ?? "", completion: { (image, error) in
+            guard let image = image, error == nil else {
+                print(error ?? "")
+                return
+            }
+            
+            // increases the size of image to the same in MovieCollectionViewController
+            let scale: CGFloat = 2.0 // Set the scale factor for the new image
+            let newSize = CGSize(width: image.size.width * scale, height: image.size.height * scale)
+            let renderer = UIGraphicsImageRenderer(size: newSize)
+            let newImage = renderer.image { _ in
+                image.draw(in: CGRect(origin: .zero, size: newSize))
+            }
+            
+            self.imageView.image = newImage
+        })
         ratingLabel.text = "Rated " + movie.contentAdvisoryRating!
         priceLabel.text = movie.trackPrice_TOSTRING
-        descriptionLabel.text = movie.longDescription
+        descriptionTextView.text = movie.longDescription
     }
 
     //
