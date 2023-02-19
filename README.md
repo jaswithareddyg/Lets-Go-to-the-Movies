@@ -17,5 +17,7 @@ Date Picker:<br>
 https://www.youtube.com/watch?v=fhRJ5HQjBIE<br>
 UIStackView: <br>
 https://www.kodeco.com/2198310-uistackview-tutorial-for-ios-introducing-stack-views <br>
+Cache Data: <br>
+https://www.hackingwithswift.com/example-code/system/how-to-cache-data-using-nscache <br>
 
 # Notes
