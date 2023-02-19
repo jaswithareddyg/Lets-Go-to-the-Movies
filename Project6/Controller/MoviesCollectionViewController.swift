@@ -213,7 +213,7 @@ extension MoviesCollectionViewController: UISearchBarDelegate {
         
         var senturl = "https://itunes.apple.com/search?country=US&media=movie&limit=200&term="
         senturl += srchCtr.text!
-        print("Sent",senturl)
+        srchCtr.text = srchCtr.text!
         
         MovieClient.fetchMovies(url: senturl) { [weak self] moviesData, error in
             guard let moviesData = moviesData, error == nil else {
