@@ -27,8 +27,8 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         titleLabel.text = movie.trackName
-        ratingLabel.text = "Rated \(String(describing: movie.contentAdvisoryRating))"
-        priceLabel.text = "\(String(describing: movie.trackPrice))"
+        ratingLabel.text = "Rated " + movie.contentAdvisoryRating!
+        priceLabel.text = movie.trackPrice_TOSTRING
         descriptionLabel.text = movie.longDescription
     }
 

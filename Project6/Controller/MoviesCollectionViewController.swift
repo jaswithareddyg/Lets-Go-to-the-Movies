@@ -134,6 +134,9 @@ extension MoviesCollectionViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // There are two segue possible from this view controller: the popover filter or the detail view controller
+        let filters = FiltersViewController()
+        filters.delegate = self
+        
         if segue.identifier == "popover" {
             _ = segue.destination as? FiltersViewController
             
@@ -184,7 +187,7 @@ extension MoviesCollectionViewController: MoviesFilterDelegate {
         /// Update the collection view based on the current state of the `data` property
         var snapshot = NSDiffableDataSourceSnapshot<Int, Movie>()
         snapshot.appendSections([0])
-        snapshot.appendItems(DataManager.sharedInstance.movies)
+        snapshot.appendItems(DataManager.sharedInstance.filteredMovies)
         
         dataSource.apply(snapshot)
     }

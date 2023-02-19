@@ -34,7 +34,7 @@ class DataManager {
         self.filteredMovies = movies
     }
     func update1(_ filteredMovies: [Movie]) {
-        self.movies = filteredMovies
+        self.filteredMovies = filteredMovies
     }
     
     func update2(priceLimit: Float? = nil, rating: String? = nil) {

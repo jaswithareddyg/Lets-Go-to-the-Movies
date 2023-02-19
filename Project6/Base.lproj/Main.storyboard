@@ -138,6 +138,7 @@
                         <outlet property="priceLabel" destination="DS0-2W-Phx" id="wxa-Hm-aw6"/>
                         <outlet property="priceStepper" destination="uDm-OX-lgr" id="rRO-HY-2a5"/>
                         <outlet property="ratingsControl" destination="JEz-Qe-glU" id="7bZ-Du-JbO"/>
+                        <outlet property="sortLatest" destination="p1V-1E-CN4" id="BuV-Fr-iib"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cIS-hy-dVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

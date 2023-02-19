@@ -12,7 +12,7 @@ class FiltersViewController: UIViewController {
     @IBOutlet private var priceLabel: UILabel!
     @IBOutlet private var ratingsControl: UISegmentedControl!
     @IBOutlet private var priceStepper: UIStepper!
-    
+    @IBOutlet var sortLatest: UISwitch!
     weak var delegate: MoviesFilterDelegate?
     
     override func viewDidLoad() {
