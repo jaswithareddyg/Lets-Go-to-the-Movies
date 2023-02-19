@@ -11,5 +11,5 @@ protocol MoviesFilterDelegate: AnyObject {
     func changeFilter(price: Float, rating: String, flag: Int)
 }
 
-// flag - to determine if the list of movies need to be sorted for the latest
+// flag - to determine if the list of movies need to be sorted according to the release date
 // 0 - need not be sorted, 1 - needs to be sorted

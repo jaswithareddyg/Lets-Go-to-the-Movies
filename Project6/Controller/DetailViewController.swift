@@ -28,6 +28,8 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         titleLabel.text = movie.trackName
+        
+        // uses the default swift image if the movie poster has not been loaded
         imageView.image = UIImage(systemName: "swift")
         MovieClient.getImage ( url: movie.artworkUrl100 ?? "", completion: { (image, error) in
             guard let image = image, error == nil else {

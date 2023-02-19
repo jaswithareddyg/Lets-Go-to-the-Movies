@@ -65,6 +65,9 @@ class FiltersViewController: UIViewController {
     }
     
     @IBAction func sortChanged(_ sender: UISwitch) {
+        //
+        // IBAction function to detect if the UISwitch has been used to sort by latest
+        //
         if sender.isOn {
             delegate?.changeFilter(price: DataManager.sharedInstance.priceLimitFilter, rating: DataManager.sharedInstance.ratingFilter, flag: 1)
         }

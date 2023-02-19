@@ -49,6 +49,7 @@ class MovieClient {
                 
                 // updating cached results
                 cachedMovies = issues
+                
                 DispatchQueue.main.async { completion(issues, nil) }
             } catch(let parsingError) {
                 DispatchQueue.main.async { completion(nil, parsingError) }

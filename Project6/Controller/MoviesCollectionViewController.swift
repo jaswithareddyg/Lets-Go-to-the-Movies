@@ -76,6 +76,9 @@ class MoviesCollectionViewController: UICollectionViewController, UISearchResult
                     return
                 }
                 cell.imageView.image = image
+                
+                // to set the color of the tile and also to change the color of the text on the tile for readability
+                
                 let averageColor = image.averageColor
                 cell.backgroundColor = averageColor
                 
@@ -135,6 +138,8 @@ extension MoviesCollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // There are two segue possible from this view controller: the popover filter or the detail view controller
         if segue.identifier == "popover" {
+            
+            // sets a delegate
             let filters = segue.destination as? FiltersViewController
             filters!.delegate = self
 
@@ -180,12 +185,14 @@ extension MoviesCollectionViewController: MoviesFilterDelegate {
             return isBelowSelectedPriceLimit && matchesSelectedRating
         }
         
+        // uses the flag as an indicator to sort the filteredMovies
+        
         if flag == 1 {
             filteredMovies.sort {
                 guard let date1 = $0.releaseDate, let date2 = $1.releaseDate else {
-                    return false // if either releaseDate is nil, we can't compare them, so return false
+                    return false // if either releaseDate is nil, we can't compare them, so we return false
                 }
-                return date1 > date2 // sort by descending release date
+                return date1 > date2 // sorts by descending order of release date
             }
         }
         
@@ -214,6 +221,8 @@ extension MoviesCollectionViewController: UISearchBarDelegate {
         var senturl = "https://itunes.apple.com/search?country=US&media=movie&limit=200&term="
         senturl += srchCtr.text!
         srchCtr.text = srchCtr.text!
+        
+        // sends a URL with the searchterm to get a "list" of filtered movies
         
         MovieClient.fetchMovies(url: senturl) { [weak self] moviesData, error in
             guard let moviesData = moviesData, error == nil else {
