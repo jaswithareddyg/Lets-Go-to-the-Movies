@@ -134,12 +134,10 @@ extension MoviesCollectionViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // There are two segue possible from this view controller: the popover filter or the detail view controller
-        let filters = FiltersViewController()
-        filters.delegate = self
-        
         if segue.identifier == "popover" {
-            _ = segue.destination as? FiltersViewController
-            
+            let filters = segue.destination as? FiltersViewController
+            filters!.delegate = self
+
             segue.destination.preferredContentSize = CGSize(width: 300, height: 200)
             
             if let presentationController = segue.destination.popoverPresentationController { // 1
@@ -177,7 +175,7 @@ extension MoviesCollectionViewController: MoviesFilterDelegate {
     func changeFilter(price: Float, rating: String) {
         let filteredMovies = DataManager.sharedInstance.movies.filter { movie in
             let isBelowSelectedPriceLimit = movie.trackPrice ?? 0 < price
-            let matchesSelectedRating = rating == "anyRating" || movie.contentAdvisoryRating == rating
+            let matchesSelectedRating = rating == "anyRating" || movie.contentAdvisoryRating?.lowercased() == rating.lowercased()
             
             return isBelowSelectedPriceLimit && matchesSelectedRating
         }

@@ -25,7 +25,7 @@ class FiltersViewController: UIViewController {
             selectedRatingIndex = 0
         } else if DataManager.sharedInstance.ratingFilter == "pg" {
             selectedRatingIndex = 1
-        } else if DataManager.sharedInstance.ratingFilter == "pg13" {
+        } else if DataManager.sharedInstance.ratingFilter == "pg-13" {
             selectedRatingIndex = 2
         } else if DataManager.sharedInstance.ratingFilter == "r" {
             selectedRatingIndex = 3
@@ -47,7 +47,7 @@ class FiltersViewController: UIViewController {
         } else if index == 1 {
             selectedRatingFilter = "pg"
         } else if index == 2 {
-            selectedRatingFilter = "pg13"
+            selectedRatingFilter = "pg-13"
         } else if index == 3 {
             selectedRatingFilter = "r"
         } else {
