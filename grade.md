@@ -74,7 +74,7 @@ Great work with functionality!
 
 Strings are fragile and error-prone. Enums are type-safe and dynamic. `contentAdvisoryRating`
 should be type `Rating`, and you should use that object type around the app. Wherever you see a
-string type movei rating, it needs to be replaced with `Rating` type. And when using enums, instead 
+string type movie rating, it needs to be replaced with `Rating` type. And when using enums, instead 
 of `if/else` statements, use switch statements.
 
 Here's a snippet that needs improved:
@@ -93,7 +93,6 @@ if index == 0 {
 ```
 
 Where else in the app could this be utilized? (rhetorical question, just think about it)
-
 
 ## Score
 
