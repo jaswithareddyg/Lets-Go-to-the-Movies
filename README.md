@@ -63,4 +63,9 @@ Enhance your movie exploration experience with the "Let's Go to the Movies" appl
 - [DispatchQueue Main Async](https://stackoverflow.com/questions/59615860/how-do-i-ensure-my-dispatchqueue-executes-some-code-on-the-main-thread-specifica)
 - [UIAppearance for Dark Mode](https://stackoverflow.com/questions/48699048/what-does-dispatchqueue-main-async-and-completed-escaping-mean-in)
 
+## Additional Information
+
+- This project was developed using Xcode and Swift.
+- For issues or questions, contact [(Jas) Jaswitha](mailto:jaswithareddyguntaka@gmail.com).
+
 Explore the cinematic world with "Let's Go to the Movies" and enjoy an enhanced movie viewing experience! 🎬🍿
